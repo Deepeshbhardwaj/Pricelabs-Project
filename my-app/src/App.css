@@ -1,0 +1,141 @@
+.App {
+  text-align: center;
+}
+
+/* ul {
+  list-style-type: none;
+} */
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.priceLabs {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 40%;
+  height: 100%;
+}
+
+.custom-map {
+  width: 100%;
+  height: 600px;
+}
+
+.mapContainer {
+  width: 100%;
+  height: 600px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.pagination button {
+  background-color: #f0f0f0;
+  border: none;
+  margin: 0 5px;
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
+.pagination button.active {
+  background-color: #007bff;
+  color: #fff;
+}
+.hotel-list {
+  height: 80%;
+  overflow: scroll;
+  list-style-type: none;
+  padding: 20px;
+}
+
+.hotel-item {
+  display: flex;
+  margin: 10px;
+  padding: 10px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+}
+
+.hotel-image img {
+  max-width: 150px;
+  min-width: 150px;
+  max-height: 100px;
+  min-height: 100px;
+  object-fit: cover;
+}
+
+.hotel-details {
+  margin-left: 20px;
+}
+
+.propertyName {
+  margin: 0px;
+}
+
+.hotel-rating {
+  color: #007bff; /* Customize the color as needed */
+}
+
+.star-rating {
+  display: inline-block;
+}
+
+.star {
+  font-size: 20px; /* Adjust the size of stars as needed */
+  color: #ffc107; /* Color of filled stars */
+}
+
+.star.empty {
+  color: #e4e4e4; /* Color of empty stars */
+}
+
+.Search {
+  width: 70%;
+  height: 45px;
+}
+
+.searchButton {
+  width: 15%;
+  height: 50px;
+  margin-left: 25px;
+}
