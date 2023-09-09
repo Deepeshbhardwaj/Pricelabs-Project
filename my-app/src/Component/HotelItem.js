@@ -2,10 +2,15 @@ import React from "react";
 import StarRating from "./StarRating";
 import CroppedHeading from "./CroppedHeading";
 
-function HotelItem({ hotel }) {
-  console.log(hotel);
+function HotelItem({ hotel, onHotelChange, select }) {
   return (
     <div className="hotel-item">
+      <input
+        type="checkbox"
+        isChecked={select.filter((ele) => ele.propertyId === hotel?.propertyId)}
+        onChange={() => onHotelChange(hotel)}
+      />
+
       <div className="hotel-image">
         <img
           src={hotel?.images[0]?.c6_uri}

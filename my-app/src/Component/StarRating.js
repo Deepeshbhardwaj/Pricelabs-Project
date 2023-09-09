@@ -4,7 +4,6 @@ import { Star } from "phosphor-react";
 function StarRating({ rating }) {
   const filledStars = Math.round(rating);
   const emptyStars = 6 - filledStars;
-  console.log(rating, filledStars, emptyStars);
   return (
     <div className="star-rating">
       {[...Array(filledStars)].map((_, index) => (

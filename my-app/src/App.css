@@ -6,6 +6,16 @@
   list-style-type: none;
 } */
 
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+.map-container {
+  height: 100vh;
+  width: 100%;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -138,4 +148,11 @@
   width: 15%;
   height: 50px;
   margin-left: 25px;
+}
+
+.selected-button {
+  background-color: red; /* Change the background color to your desired style */
+  color: red; /* Change the text color to your desired style */
+  border: 1px solid #007bff; /* Add a border or modify it as needed */
+  /* Add any other styling you want for the selected button */
 }

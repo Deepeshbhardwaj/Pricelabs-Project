@@ -1,12 +1,6 @@
 import React, { useState } from "react";
 
-function Filter({ onFilter }) {
-  const [searchText, setSearchText] = useState("");
-
-  const handleSearch = () => {
-    onFilter(searchText);
-  };
-
+function Filter({ searchText, setSearchText }) {
   return (
     <div className="filter">
       <input
@@ -16,9 +10,6 @@ function Filter({ onFilter }) {
         value={searchText}
         onChange={(e) => setSearchText(e.target.value)}
       />
-      <button className="searchButton" onClick={handleSearch}>
-        Search
-      </button>
     </div>
   );
 }
