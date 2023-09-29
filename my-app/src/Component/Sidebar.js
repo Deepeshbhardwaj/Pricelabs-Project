@@ -9,10 +9,11 @@ function Sidebar({ hotels, select, setSelected }) {
   const debouncedSearchTerm = useDebounce(searchTerm, 300); // Debounce with a 300ms delay
   const [filteredData, setFilteredData] = useState(hotels);
   const itemsPerPage = 5;
+
   useEffect(() => {
     // Filter data based on the debounced search term
     if (debouncedSearchTerm) {
-      const filtered = hotels.filter((item) =>
+      const filtered = filteredData.filter((item) =>
         item?.propertyMetadata?.propertyName
           ?.toLowerCase()
           .includes(debouncedSearchTerm?.toLowerCase())
@@ -34,6 +35,32 @@ function Sidebar({ hotels, select, setSelected }) {
   const endIndex = startIndex + itemsPerPage;
   const displayedData = filteredData.slice(startIndex, endIndex);
 
+  const onRemoveHotel = (hotelId) => {
+    const dataIndex = filteredData.findIndex(
+      (ele) => ele?.propertyId === hotelId?.propertyId
+    );
+
+    if (dataIndex !== -1) {
+      const updateFilterData = [...filteredData];
+      const removedProperty = updateFilterData.splice(dataIndex, 1);
+      const getLocalData =
+        JSON.parse(localStorage.getItem("removedProperty")) || [];
+
+      if (getLocalData[0] !== "null") {
+        const localDataCopy = [...getLocalData];
+        const removedData = removedProperty[0]?.propertyId;
+        localDataCopy.push(removedData);
+
+        localStorage.setItem("removedProperty", JSON.stringify(localDataCopy));
+      } else {
+        const removedData = [removedProperty[0]?.propertyId];
+        localStorage.setItem("removedProperty", JSON.stringify(removedData));
+      }
+
+      setFilteredData([...updateFilterData]);
+    }
+  };
+
   const onHotelChange = (newEle) => {
     const ele = select.find((ele) => ele.propertyId === newEle.propertyId);
     if (ele) {
@@ -42,6 +69,7 @@ function Sidebar({ hotels, select, setSelected }) {
       setSelected([...select, newEle]);
     }
   };
+
   return (
     <div className="sidebar">
       <h2>Hotel List</h2>
@@ -54,6 +82,7 @@ function Sidebar({ hotels, select, setSelected }) {
                 hotel={hotel}
                 onHotelChange={onHotelChange}
                 select={select}
+                onRemoveHotel={onRemoveHotel}
               />
             </li>
           ))}

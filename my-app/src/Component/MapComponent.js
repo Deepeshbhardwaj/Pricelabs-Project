@@ -3,20 +3,10 @@ import { MapContainer, Marker, Popup, TileLayer, Tooltip } from "react-leaflet";
 import { EditControl } from "react-leaflet-draw";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import { MapPin } from "phosphor-react";
 import MapIcon from "../assets/mapIcon.png";
 
 function CommonMap({ coordinates }) {
   const [map, setMap] = useState(null);
-  const [hoveredMarker, setHoveredMarker] = useState(null);
-
-  const handleMarkerMouseOver = (index) => {
-    setHoveredMarker(index);
-  };
-
-  const handleMarkerMouseOut = () => {
-    setHoveredMarker(null);
-  };
 
   const onMapReady = (map) => {
     setMap(map);
@@ -57,7 +47,7 @@ function CommonMap({ coordinates }) {
                   style={{ width: "100px", height: "auto" }}
                 />
               </div>
-              <h3>{coord.propertyName}</h3>{" "}
+              <h3>{coord.propertyName}</h3>
               {/* Replace with your marker's title */}
             </Tooltip>
           </Marker>

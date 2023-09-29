@@ -2,7 +2,7 @@ import React from "react";
 import StarRating from "./StarRating";
 import CroppedHeading from "./CroppedHeading";
 
-function HotelItem({ hotel, onHotelChange, select }) {
+function HotelItem({ hotel, onHotelChange, select, onRemoveHotel }) {
   return (
     <div className="hotel-item">
       <input
@@ -27,6 +27,7 @@ function HotelItem({ hotel, onHotelChange, select }) {
           {/* <span>Rating: {hotel?.averageRating}</span> */}
           <StarRating rating={hotel?.averageRating} />
         </div>
+        <button onClick={() => onRemoveHotel(hotel)}>Remove</button>
       </div>
     </div>
   );

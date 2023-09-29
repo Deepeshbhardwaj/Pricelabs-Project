@@ -7,15 +7,14 @@ import data from "./mockData.json";
 import "react-tooltip/dist/react-tooltip.css";
 
 function App() {
-  const hotels = data?.data?.results?.listings;
+  const removedData = JSON.parse(localStorage.getItem("removedProperty"));
 
-  const mapData = hotels.map((hotel, index) => ({
-    id: hotel?.propertyId,
-    propertyName: hotel?.propertyMetadata?.propertyName,
-    lat: hotel?.geoCode?.latitude,
-    lng: hotel?.geoCode?.longitude,
-    image: hotel?.images[0]?.c6_uri,
-  }));
+  const hotels = data?.data?.results?.listings.filter((hotel) => {
+    return !removedData?.includes(hotel?.propertyId);
+  });
+
+  console.log(hotels, hotels.length);
+
   const [select, setSelected] = useState([]);
 
   return (
